@@ -36,10 +36,6 @@ table.offline {
   color:black;
   background-color:#e1e1ea;
 }
-td.offline {
-  /*border: 1px solid #000000;*/  
-}
-
 
 table.unavailable {
   background-color:#666666;
@@ -51,8 +47,10 @@ table.unavailable {
 }
 
 img {
-  height: 3em;
-  width:3em;
+  height: 5rem;
+  width: 5rem;
+  /* width:5vw;
+  height: auto; */
   border: 3px black solid;
   border-radius: 30%;
 }

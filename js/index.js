@@ -96,9 +96,11 @@ function offline(currentChannelUrl, currentUser) {
 
 function accountClosed(currentName) {
   $(".unavailable").append(
-    "<tr><td class='short'><img src='https://res.cloudinary.com/mayerxc/image/upload/v1470519076/non-user-missing-person_iv6rnr.png'></td><td> Channel " +
-      currentName +
-      " account has closed.</td></tr>"
+    "<tr><td class='short'><img src=" + missingLogo + "></td><td>" +
+    "<strong>" +
+    currentName +
+    "</strong>" +
+    " account has closed.</td></tr>"
   );
 }
 
