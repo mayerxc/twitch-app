@@ -1,4 +1,4 @@
-//have to use the go through api instead of twitch's API
+//have to use the go through api found below instead of twitch's API (twitch's stopped working awhile back when it was updated)
 var baseUrl = "https://wind-bow.gomix.me/twitch-api/";
 var users = [
   "freecodecamp",
@@ -25,22 +25,24 @@ var missingLogo = 'https://res.cloudinary.com/mayerxc/image/upload/v1470519076/n
 
 function getApis(user) {
   $.getJSON(streams + user + callback, function(data) {
-    //console.log(data);
+    //if null then it's offline
     if (data.stream === null) {
       //do something with null
       channelUrl = baseUrl + "channels/" + user;
       status = "Offline";
       console.log("stream is null: " + channelUrl);
+      //run offline function
       offline(channelUrl, user);
     } else if (data.stream === undefined) {
-      //this doesn't work anymore after they changed the API
+      //if undefined, then their account is closed
+      //this may go here anymore after twitch changed their api
       channelUrl = baseUrl + "/channels/" + user;
       status = data.message;
       name = user;
       console.log("stream is closed: " + channelUrl + "message is: " + status);
       accountClosed(name);
     } else {
-      //end else if
+      //they're online since there is a status
       status = data.status;
       game = data.stream.game;
       logo = data.stream.channel.logo;
@@ -75,7 +77,7 @@ function offline(currentChannelUrl, currentUser) {
     } else {
       name = data2.name;
       
-      //some users don't have a logo so use ternary
+      //some users don't have a logo
       logo = data2.logo === null ? missingLogo : data2.logo;
       channelUrl = data2.url;
       console.log("Offline channel name: " + name);
